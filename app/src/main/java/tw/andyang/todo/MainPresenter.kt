@@ -32,4 +32,8 @@ class MainPresenter(val view: MainView) {
     fun checkAll(completed: Boolean) {
         redux.dispatcher(TodoAction.CheckAllTodo(completed))
     }
+
+    fun generateData() {
+        redux.dispatcher(TodoAction.GenerateData)
+    }
 }

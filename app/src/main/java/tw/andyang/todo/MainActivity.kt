@@ -93,6 +93,9 @@ class MainActivity : AppCompatActivity(), MainView {
                     }
                 }.show()
             }
+            R.id.generate -> {
+                presenter.generateData()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
