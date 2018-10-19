@@ -13,10 +13,12 @@ object ReduxTest : Spek({
         it("test dispatcher TodoAction.AddTodo, TodoAction.UpdateTodo, TodoAction.DeleteTodo") {
             redux.dispatcher(TodoAction.AddTodo(todo))
             testObserver.assertValueAt(0, TodoState(listOf(todo)))
+            redux.dispatcher(TodoAction.CheckAllTodo(true))
+            testObserver.assertValueAt(1, TodoState(listOf(todo.copy(completed = true))))
             redux.dispatcher(TodoAction.UpdateTodo("1", "new text", true))
-            testObserver.assertValueAt(1, TodoState(listOf(newTodo)))
+            testObserver.assertValueAt(2, TodoState(listOf(newTodo)))
             redux.dispatcher(TodoAction.DeleteTodo("1"))
-            testObserver.assertValueAt(2, TodoState(emptyList()))
+            testObserver.assertValueAt(3, TodoState(emptyList()))
         }
     }
 })

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private val presenter = MainPresenter(this)
     private val compositeDisposable = CompositeDisposable()
-    private val adapter = TodoAdapter()
+    private val adapter = TodoListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity(), MainView {
         adapter.onCompletedChanged = { todo -> presenter.updateTodo(todo) }
         adapter.onEditCallBack = { todo -> showEditDialog(todo) }
         presenter.initialize()
+
+        checkboxAll.setOnClickListener {
+            presenter.checkAll(checkboxAll.isChecked)
+        }
     }
 
     private fun showEditDialog(todo: Todo) {
@@ -94,7 +98,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun updateTodo(todos: List<Todo>) {
-        adapter.submitList(todos)
+        adapter.refresh(todos)
     }
 
     override fun bind(disposable: Disposable) {

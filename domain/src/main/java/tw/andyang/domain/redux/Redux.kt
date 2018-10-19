@@ -3,6 +3,7 @@ package tw.andyang.domain.redux
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import tw.andyang.domain.redux.reducer.AddTodoReducer
+import tw.andyang.domain.redux.reducer.CheckAllReducer
 import tw.andyang.domain.redux.reducer.DeleteTodoReducer
 import tw.andyang.domain.redux.reducer.UpdateTodoReducer
 
@@ -17,6 +18,7 @@ class Redux {
                     is TodoAction.AddTodo -> AddTodoReducer(action)
                     is TodoAction.UpdateTodo -> UpdateTodoReducer(action)
                     is TodoAction.DeleteTodo -> DeleteTodoReducer(action)
+                    is TodoAction.CheckAllTodo -> CheckAllReducer(action)
                 }
                 reducer.newState(currentState)
             }

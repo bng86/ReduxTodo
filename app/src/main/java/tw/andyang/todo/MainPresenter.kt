@@ -28,4 +28,8 @@ class MainPresenter(val view: MainView) {
     fun deleteTodo(id: String) {
         redux.dispatcher(TodoAction.DeleteTodo(id))
     }
+
+    fun checkAll(completed: Boolean) {
+        redux.dispatcher(TodoAction.CheckAllTodo(completed))
+    }
 }

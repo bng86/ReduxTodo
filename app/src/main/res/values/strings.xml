@@ -6,4 +6,5 @@
     <string name="add_todo">新增待辦事項</string>
     <string name="delete">刪除</string>
     <string name="update">修改</string>
+    <string name="check_all">全選</string>
 </resources>
