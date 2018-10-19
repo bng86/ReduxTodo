@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Todo</string>
+    <string name="add">新增</string>
+    <string name="hint_add_todo">請輸入訊息</string>
+    <string name="cancel">取消</string>
+    <string name="add_todo">新增待辦事項</string>
+    <string name="delete">刪除</string>
+    <string name="update">修改</string>
 </resources>

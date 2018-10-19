@@ -8,15 +8,16 @@ import tw.andyang.domain.redux.TodoAction
 import tw.andyang.domain.redux.TodoState
 
 object AddTodoReducerSpec : Spek({
-    val currentState = TodoState()
-    val todo = Todo("text")
-    val action  = TodoAction.AddTodo(todo)
+    val todo1 = Todo("1")
+    val todo2 = Todo("2")
+    val currentState = TodoState(todos = listOf(todo1))
+    val action = TodoAction.AddTodo(todo2)
     val target by memoized { AddTodoReducer(action) }
 
     describe("add todo") {
-        it("when add 1 todo then todo state got 1 todo") {
+        it("when origin 1 todo add 1 todo then todo state got 2 todo") {
             val actual = target.newState(currentState)
-            val excepted = TodoState(listOf(todo))
+            val excepted = TodoState(listOf(todo1, todo2))
             assertEquals(excepted, actual)
         }
     }

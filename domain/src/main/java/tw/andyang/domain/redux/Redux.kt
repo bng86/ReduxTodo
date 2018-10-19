@@ -6,9 +6,9 @@ import tw.andyang.domain.redux.reducer.AddTodoReducer
 import tw.andyang.domain.redux.reducer.DeleteTodoReducer
 import tw.andyang.domain.redux.reducer.UpdateTodoReducer
 
-object ActionRedux {
+class Redux {
     private val actionDispatcher = PublishSubject.create<TodoAction>()
-    private val currentState: TodoState = TodoState()
+    private var currentState: TodoState = TodoState()
 
     fun actionDispatcher(): Observable<TodoState> {
         return actionDispatcher
@@ -20,6 +20,7 @@ object ActionRedux {
                 }
                 reducer.newState(currentState)
             }
+            .doAfterNext { newState -> currentState = newState }
     }
 
     fun dispatcher(todoAction: TodoAction) {
