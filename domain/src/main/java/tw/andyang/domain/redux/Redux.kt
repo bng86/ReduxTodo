@@ -2,9 +2,10 @@ package tw.andyang.domain.redux
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
+import tw.andyang.domain.model.FakeData
 import tw.andyang.domain.redux.reducer.*
 
-class Redux {
+class Redux(val fakeData: FakeData) {
     private val actionDispatcher = PublishSubject.create<TodoAction>()
     private var currentState: TodoState = TodoState()
 
@@ -16,7 +17,7 @@ class Redux {
                     is TodoAction.UpdateTodo -> UpdateTodoReducer(action)
                     is TodoAction.DeleteTodo -> DeleteTodoReducer(action)
                     is TodoAction.CheckAllTodo -> CheckAllReducer(action)
-                    TodoAction.GenerateData -> GenerateDataReducer()
+                    TodoAction.GenerateData -> GenerateDataReducer(fakeData)
                 }
                 reducer.newState(currentState.clone())
             }

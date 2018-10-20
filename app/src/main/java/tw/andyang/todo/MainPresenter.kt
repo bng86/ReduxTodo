@@ -1,5 +1,6 @@
 package tw.andyang.todo
 
+import tw.andyang.domain.model.FakeData
 import tw.andyang.domain.model.Todo
 import tw.andyang.domain.redux.Redux
 import tw.andyang.domain.redux.TodoAction
@@ -7,7 +8,7 @@ import tw.andyang.todo.extension.bind
 
 class MainPresenter(val view: MainView) {
 
-    private val redux = Redux()
+    private val redux = Redux(FakeData())
 
     fun initialize() {
         redux.actionDispatcher()
