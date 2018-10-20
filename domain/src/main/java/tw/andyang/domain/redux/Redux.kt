@@ -18,9 +18,9 @@ class Redux {
                     is TodoAction.CheckAllTodo -> CheckAllReducer(action)
                     TodoAction.GenerateData -> GenerateDataReducer()
                 }
-                reducer.newState(currentState)
+                reducer.newState(currentState.clone())
             }
-            .doAfterNext { newState -> currentState = newState }
+            .doAfterNext { newState -> currentState = newState.clone() }
     }
 
     fun dispatcher(todoAction: TodoAction) {

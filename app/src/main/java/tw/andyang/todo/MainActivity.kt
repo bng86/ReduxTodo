@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private val presenter = MainPresenter(this)
     private val compositeDisposable = CompositeDisposable()
-    private val adapter = TodoListAdapter()
+    private val adapter = TodoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun updateTodo(todos: List<Todo>) {
-        adapter.refresh(todos)
+        adapter.submitList(todos)
     }
 
     override fun bind(disposable: Disposable) {
