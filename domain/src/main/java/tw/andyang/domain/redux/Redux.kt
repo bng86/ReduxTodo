@@ -5,7 +5,7 @@ import io.reactivex.subjects.PublishSubject
 import tw.andyang.domain.model.FakeData
 import tw.andyang.domain.redux.reducer.*
 
-class Redux(val fakeData: FakeData) {
+class Redux(private val fakeData: FakeData) {
     private val actionDispatcher = PublishSubject.create<TodoAction>()
     private var currentState: TodoState = TodoState()
 

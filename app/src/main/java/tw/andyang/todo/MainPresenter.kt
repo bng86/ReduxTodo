@@ -1,14 +1,15 @@
 package tw.andyang.todo
 
-import tw.andyang.domain.model.FakeData
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 import tw.andyang.domain.model.Todo
 import tw.andyang.domain.redux.Redux
 import tw.andyang.domain.redux.TodoAction
 import tw.andyang.todo.extension.bind
 
-class MainPresenter(val view: MainView) {
+class MainPresenter(val view: MainView) : KoinComponent {
 
-    private val redux = Redux(FakeData())
+    private val redux by inject<Redux>()
 
     fun initialize() {
         redux.actionDispatcher()
